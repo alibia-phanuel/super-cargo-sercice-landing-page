@@ -17,9 +17,9 @@ export const NAV_LINKS = [
 ];
 
 export const TRUST_STATS = [
-  { value: "2015", label: "Depuis 2015" },
+  { value: "2000", label: "Depuis 2000" },
   { value: "CN → CM", label: "Chine → Cameroun" },
-  { value: "Mer & Air", label: "Transport maritime & aérien" },
+  { value: "Maritime & Aérien", label: "Transport maritime & aérien" },
   { value: "100%", label: "Accompagnement de A à Z" },
 ];
 
