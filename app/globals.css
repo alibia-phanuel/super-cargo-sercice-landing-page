@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --scs-navy: #062b68;
+  --scs-navy-deep: #041b45;
+  --scs-blue: #0b4ea2;
+  --scs-red: #d71920;
+  --scs-amber: #f5b400;
+  --scs-white: #ffffff;
+  --scs-mist: #f5f7fa;
+  --scs-ink: #0b1220;
+  --scs-slate: #5b6b85;
+
+  --background: var(--scs-white);
+  --foreground: var(--scs-ink);
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+}
+
+@theme inline {
+  --color-navy: var(--scs-navy);
+  --color-navy-deep: var(--scs-navy-deep);
+  --color-blue: var(--scs-blue);
+  --color-red: var(--scs-red);
+  --color-amber: var(--scs-amber);
+  --color-mist: var(--scs-mist);
+  --color-ink: var(--scs-ink);
+  --color-slate: var(--scs-slate);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+/* Signature route element: an animated dot travels the dashed path
+   that runs through the hero + coverage sections. */
+.route-path {
+  stroke-dasharray: 8 7;
+  animation: route-dash 30s linear infinite;
+}
+
+.route-dot {
+  offset-rotate: 0deg;
+  animation: route-travel 6s ease-in-out infinite;
+}
+
+@keyframes route-dash {
+  to {
+    stroke-dashoffset: -300;
+  }
+}
+
+@keyframes route-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-path {
+    animation: none;
+  }
+  .route-dot {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::selection {
+  background: var(--scs-amber);
+  color: var(--scs-navy-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--scs-amber);
+  outline-offset: 2px;
+}
