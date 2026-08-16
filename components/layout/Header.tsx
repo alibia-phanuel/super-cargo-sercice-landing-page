@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
@@ -42,24 +43,31 @@ export default function Header() {
           "fixed inset-x-0 top-0 z-40 transition-all duration-300",
           scrolled
             ? "bg-white/85 shadow-[0_4px_20px_-8px_rgba(0,16,64,0.15)] backdrop-blur-md"
-            : "bg-white/0"
+            : "bg-white/0",
         )}
       >
         <Container>
           <div
             className={cn(
               "flex items-center justify-between transition-all duration-300",
-              scrolled ? "py-3" : "py-5"
+              scrolled ? "py-3" : "py-5",
             )}
           >
             <a href="#accueil" className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary font-display text-sm font-bold text-white">
-                SCS
+              <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-white">
+                <Image
+                  src="/logo.png"
+                  alt="Super Cargo Service"
+                  fill
+                  sizes="36px"
+                  className="object-contain p-1"
+                  priority
+                />
               </span>
               <span
                 className={cn(
                   "hidden font-display text-base font-semibold sm:inline transition-colors",
-                  scrolled ? "text-primary" : "text-white"
+                  scrolled ? "text-primary" : "text-white",
                 )}
               >
                 Super Cargo Service
@@ -75,7 +83,7 @@ export default function Header() {
                     "text-sm font-medium transition-colors",
                     scrolled
                       ? "text-text/70 hover:text-primary"
-                      : "text-white/90 hover:text-white"
+                      : "text-white/90 hover:text-white",
                   )}
                 >
                   {link.label}
@@ -94,7 +102,7 @@ export default function Header() {
               onClick={() => setOpen(true)}
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-lg lg:hidden transition-colors",
-                scrolled ? "text-primary" : "text-white"
+                scrolled ? "text-primary" : "text-white",
               )}
             >
               <Menu className="h-6 w-6" />
@@ -118,8 +126,19 @@ export default function Header() {
               >
                 <Container>
                   <div className="flex items-center justify-between py-5">
-                    <span className="font-display text-base font-semibold text-white">
-                      Super Cargo Service
+                    <span className="flex items-center gap-2">
+                      <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-white">
+                        <Image
+                          src="/logo.png"
+                          alt="Super Cargo Service"
+                          fill
+                          sizes="32px"
+                          className="object-contain p-1"
+                        />
+                      </span>
+                      <span className="font-display text-base font-semibold text-white">
+                        Super Cargo Service
+                      </span>
                     </span>
                     <button
                       aria-label="Fermer le menu"
@@ -164,7 +183,7 @@ export default function Header() {
               </motion.div>
             )}
           </AnimatePresence>,
-          document.body
+          document.body,
         )}
     </>
   );
