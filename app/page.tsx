@@ -10,6 +10,7 @@ import Pricing from "@/components/sections/Pricing";
 import WhyUs from "@/components/sections/WhyUs";
 import Coverage from "@/components/sections/Coverage";
 import Offices from "@/components/sections/Offices";
+import Tracking from "@/components/sections/Tracking";
 import QuoteForm from "@/components/sections/QuoteForm";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -28,6 +29,7 @@ export default function Home() {
         <WhyUs />
         <Coverage />
         <Offices />
+        <Tracking />
         <QuoteForm />
         <FAQ />
         <FinalCTA />

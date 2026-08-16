@@ -40,6 +40,20 @@ export default function Hero() {
       id="accueil"
       className="relative overflow-hidden bg-primary pt-32 pb-20 sm:pt-40 sm:pb-28"
     >
+      {/* Vidéo de fond */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+
+      {/* Voile bleu transparent par-dessus la vidéo */}
+      <div aria-hidden className="absolute inset-0 bg-primary/70" />
+
       {/* Gradient décoratif */}
       <div
         aria-hidden
