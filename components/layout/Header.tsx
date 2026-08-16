@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
@@ -33,11 +34,14 @@ export default function Header() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "fixed inset-x-0 top-0 z-40 transition-all duration-300",
           scrolled
-            ? "bg-white/85 shadow-[0_4px_20px_-8px_rgba(6,43,104,0.15)] backdrop-blur-md"
+            ? "bg-white/85 shadow-[0_4px_20px_-8px_rgba(0,16,64,0.15)] backdrop-blur-md"
             : "bg-white/0"
         )}
       >
@@ -49,13 +53,13 @@ export default function Header() {
             )}
           >
             <a href="#accueil" className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy font-display text-sm font-bold text-white">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary font-display text-sm font-bold text-white">
                 SCS
               </span>
               <span
                 className={cn(
                   "hidden font-display text-base font-semibold sm:inline transition-colors",
-                  scrolled ? "text-navy" : "text-white"
+                  scrolled ? "text-primary" : "text-white"
                 )}
               >
                 Super Cargo Service
@@ -70,7 +74,7 @@ export default function Header() {
                   className={cn(
                     "text-sm font-medium transition-colors",
                     scrolled
-                      ? "text-ink/70 hover:text-navy"
+                      ? "text-text/70 hover:text-primary"
                       : "text-white/90 hover:text-white"
                   )}
                 >
@@ -90,57 +94,76 @@ export default function Header() {
               onClick={() => setOpen(true)}
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-lg lg:hidden transition-colors",
-                scrolled ? "text-navy" : "text-white"
+                scrolled ? "text-primary" : "text-white"
               )}
             >
               <Menu className="h-6 w-6" />
             </button>
           </div>
         </Container>
-      </header>
+      </motion.header>
 
-      {/* Le menu mobile est monté dans un portail, hors du <header>,
-          donc son position:fixed n'est plus cassé par le backdrop-blur */}
+      {/* Menu mobile avec AnimatePresence */}
       {mounted &&
-        open &&
         createPortal(
-          <div className="fixed inset-0 z-50 bg-navy-deep lg:hidden">
-            <Container>
-              <div className="flex items-center justify-between py-5">
-                <span className="font-display text-base font-semibold text-white">
-                  Super Cargo Service
-                </span>
-                <button
-                  aria-label="Fermer le menu"
-                  onClick={() => setOpen(false)}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg text-white"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-              <nav className="mt-6 flex flex-col gap-1">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="border-b border-white/10 py-4 text-lg font-medium text-white/90"
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                key="mobile-menu"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="fixed inset-0 z-50 bg-primary-dark lg:hidden"
+              >
+                <Container>
+                  <div className="flex items-center justify-between py-5">
+                    <span className="font-display text-base font-semibold text-white">
+                      Super Cargo Service
+                    </span>
+                    <button
+                      aria-label="Fermer le menu"
+                      onClick={() => setOpen(false)}
+                      className="flex h-10 w-10 items-center justify-center rounded-lg text-white"
+                    >
+                      <X className="h-6 w-6" />
+                    </button>
+                  </div>
+
+                  <nav className="mt-6 flex flex-col gap-1">
+                    {NAV_LINKS.map((link, i) => (
+                      <motion.a
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setOpen(false)}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.05 * i, duration: 0.3 }}
+                        className="border-b border-white/10 py-4 text-lg font-medium text-white/90"
+                      >
+                        {link.label}
+                      </motion.a>
+                    ))}
+                  </nav>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 }}
+                    className="mt-8"
                   >
-                    {link.label}
-                  </a>
-                ))}
-              </nav>
-              <div className="mt-8">
-                <Button
-                  href="#devis"
-                  onClick={() => setOpen(false)}
-                  className="w-full"
-                >
-                  Obtenir un devis
-                </Button>
-              </div>
-            </Container>
-          </div>,
+                    <Button
+                      href="#devis"
+                      onClick={() => setOpen(false)}
+                      className="w-full"
+                    >
+                      Obtenir un devis
+                    </Button>
+                  </motion.div>
+                </Container>
+              </motion.div>
+            )}
+          </AnimatePresence>,
           document.body
         )}
     </>

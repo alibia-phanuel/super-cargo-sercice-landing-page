@@ -1,32 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --scs-navy: #062b68;
-  --scs-navy-deep: #041b45;
-  --scs-blue: #0b4ea2;
-  --scs-red: #d71920;
-  --scs-amber: #f5b400;
-  --scs-white: #ffffff;
-  --scs-mist: #f5f7fa;
-  --scs-ink: #0b1220;
-  --scs-slate: #5b6b85;
+  /* Nouvelle palette client */
+  --scs-primary: #001040;
+  --scs-primary-dark: #000830;
+  --scs-secondary: #a00000;
+  --scs-secondary-dark: #800000;
+  --scs-background: #ffffff;
+  --scs-surface: #f5f5f5;
+  --scs-text: #111827;
+  --scs-text-muted: #6b7280;
+  --scs-border: #e5e7eb;
 
-  --background: var(--scs-white);
-  --foreground: var(--scs-ink);
+  /* Alias pour compatibilité avec l’ancien code */
+  --scs-navy: var(--scs-primary);
+  --scs-navy-deep: var(--scs-primary-dark);
+  --scs-blue: var(--scs-primary);
+  --scs-red: var(--scs-secondary);
+  --scs-amber: #f5b400; /* on garde l’ambre pour les accents (sélection / focus) */
+  --scs-white: var(--scs-background);
+  --scs-mist: var(--scs-surface);
+  --scs-ink: var(--scs-text);
+  --scs-slate: var(--scs-text-muted);
+
+  --background: var(--scs-background);
+  --foreground: var(--scs-text);
 
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-inter);
 }
 
 @theme inline {
-  --color-navy: var(--scs-navy);
-  --color-navy-deep: var(--scs-navy-deep);
-  --color-blue: var(--scs-blue);
-  --color-red: var(--scs-red);
+  --color-primary: var(--scs-primary);
+  --color-primary-dark: var(--scs-primary-dark);
+  --color-secondary: var(--scs-secondary);
+  --color-secondary-dark: var(--scs-secondary-dark);
+  --color-background: var(--scs-background);
+  --color-surface: var(--scs-surface);
+  --color-text: var(--scs-text);
+  --color-text-muted: var(--scs-text-muted);
+  --color-border: var(--scs-border);
+
+  /* Alias anciens (pour ne pas casser le code existant) */
+  --color-navy: var(--scs-primary);
+  --color-navy-deep: var(--scs-primary-dark);
+  --color-blue: var(--scs-primary);
+  --color-red: var(--scs-secondary);
   --color-amber: var(--scs-amber);
-  --color-mist: var(--scs-mist);
-  --color-ink: var(--scs-ink);
-  --color-slate: var(--scs-slate);
+  --color-mist: var(--scs-surface);
+  --color-ink: var(--scs-text);
+  --color-slate: var(--scs-text-muted);
+
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -125,7 +149,7 @@ h4,
 
 ::selection {
   background: var(--scs-amber);
-  color: var(--scs-navy-deep);
+  color: var(--scs-primary-dark);
 }
 
 :focus-visible {

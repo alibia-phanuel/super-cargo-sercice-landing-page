@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "@/components/ui/Container";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/constants";
 import { telLink, whatsappLink } from "@/lib/utils";
@@ -21,9 +23,10 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-deep text-white/80">
+    <footer className="bg-primary-dark text-white/80">
       <Container className="py-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand + Social */}
           <div>
             <span className="font-display text-lg font-semibold text-white">
               Super Cargo Service
@@ -37,9 +40,14 @@ export default function Footer() {
                   key={social.label}
                   href="#"
                   aria-label={`Super Cargo Service sur ${social.label}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-amber hover:text-navy-deep"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-amber hover:text-primary-dark"
                 >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4"
+                    fill="currentColor"
+                    aria-hidden
+                  >
                     <path d={social.path} />
                   </svg>
                 </a>
@@ -47,6 +55,7 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Navigation */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
               Navigation
@@ -54,7 +63,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="transition-colors hover:text-amber">
+                  <a
+                    href={link.href}
+                    className="transition-colors hover:text-amber"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -62,6 +74,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Services */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
               Services
@@ -69,7 +82,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {SERVICES.slice(0, 5).map((service) => (
                 <li key={service.id}>
-                  <a href="#services" className="transition-colors hover:text-amber">
+                  <a
+                    href="#services"
+                    className="transition-colors hover:text-amber"
+                  >
                     {service.title}
                   </a>
                 </li>
@@ -77,13 +93,17 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
               Contact
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
-                <a href={telLink(SITE.phonePrimary)} className="transition-colors hover:text-amber">
+                <a
+                  href={telLink(SITE.phonePrimary)}
+                  className="transition-colors hover:text-amber"
+                >
                   {SITE.phonePrimary}
                 </a>
               </li>
@@ -103,6 +123,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Bottom bar */}
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Super Cargo Service. Tous droits réservés.</p>
           <p>Chine → Cameroun · Mali · Togo · Gabon · Guinée équatoriale</p>

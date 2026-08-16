@@ -3,8 +3,8 @@ export const SITE = {
   shortName: "SCS",
   tagline: "Votre partenaire de confiance entre la Chine et le Cameroun.",
   url: "https://supercargoservice.com",
-  whatsappNumber: "237670661916",
-  phonePrimary: "+237670661916",
+  whatsappNumber: "237655388654",
+  phonePrimary: "+237655388654",
 };
 
 export const NAV_LINKS = [
@@ -25,7 +25,13 @@ export const TRUST_STATS = [
 
 export type Service = {
   id: string;
-  icon: "ShoppingCart" | "Handshake" | "CreditCard" | "ShieldCheck" | "ShipPlane" | "Truck";
+  icon:
+    | "ShoppingCart"
+    | "Handshake"
+    | "CreditCard"
+    | "ShieldCheck"
+    | "ShipPlane"
+    | "Truck";
   title: string;
   description: string;
 };
@@ -35,13 +41,15 @@ export const SERVICES: Service[] = [
     id: "achat",
     icon: "ShoppingCart",
     title: "Achat en Chine",
-    description: "Nous achetons vos produits directement auprès de vos fournisseurs.",
+    description:
+      "Nous achetons vos produits directement auprès de vos fournisseurs.",
   },
   {
     id: "negociation",
     icon: "Handshake",
     title: "Négociation fournisseurs",
-    description: "Nous négocions les meilleurs prix et conditions auprès de vos fournisseurs.",
+    description:
+      "Nous négocions les meilleurs prix et conditions auprès de vos fournisseurs.",
   },
   {
     id: "paiement",
@@ -65,7 +73,8 @@ export const SERVICES: Service[] = [
     id: "livraison",
     icon: "Truck",
     title: "Dédouanement & livraison",
-    description: "Nous nous occupons du dédouanement et de la livraison jusqu'à destination.",
+    description:
+      "Nous nous occupons du dédouanement et de la livraison jusqu'à destination.",
   },
 ];
 
@@ -100,14 +109,12 @@ export const WHY_US = [
   "Transport maritime et aérien rapide et sécurisé",
   "Livraison à Yaoundé, Douala et partout au Cameroun",
 ];
-
 export const NETWORK_COUNTRIES = [
-  { country: "Mali", city: "Bamako" },
-  { country: "Togo", city: "Lomé" },
-  { country: "Gabon", city: "Libreville" },
-  { country: "Guinée équatoriale", city: "Malabo" },
+  { country: "Mali", city: "Bamako", code: "ML" },
+  { country: "Togo", city: "Lomé", code: "TG" },
+  { country: "Gabon", city: "Libreville", code: "GA" },
+  { country: "Guinée équatoriale", city: "Malabo", code: "GQ" },
 ];
-
 export type Office = {
   country: string;
   city: string;

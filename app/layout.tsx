@@ -29,6 +29,14 @@ export const metadata: Metadata = {
     "dédouanement Cameroun",
     "Super Cargo Service",
   ],
+  icons: {
+    icon: [
+      { url: "/logo.ico" },
+      { url: "/logo.ico", sizes: "32x32", type: "image/x-icon" },
+    ],
+    shortcut: "/logo.ico",
+    apple: "/logo.ico",
+  },
   openGraph: {
     title: "Super Cargo Service | Import Chine → Cameroun",
     description:
@@ -77,7 +85,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
