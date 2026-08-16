@@ -2,7 +2,7 @@ export const SITE = {
   name: "Super Cargo Service",
   shortName: "SCS",
   tagline: "Votre partenaire de confiance entre la Chine et le Cameroun.",
-  url: "https://supercargoservice.com",
+  url: "https://www.supercargo-service.com",
   whatsappNumber: "237655388654",
   phonePrimary: "+237655388654",
 };
