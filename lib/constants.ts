@@ -90,13 +90,13 @@ export const PRICING = [
   {
     id: "cbm",
     label: "Transport par CBM",
-    price: "300 000 FCFA",
+    price: "330.000 FCFA",
     unit: "/ CBM",
   },
   {
     id: "billbag",
     label: "Transport / Billbag",
-    price: "370 000 FCFA",
+    price: "400.000 FCFA",
     unit: "",
   },
 ];
